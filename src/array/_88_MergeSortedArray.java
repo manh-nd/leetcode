@@ -1,7 +1,5 @@
 package array;
 
-import org.junit.jupiter.params.ParameterizedTest;
-
 /**
  * @link <a href="https://leetcode.com/problems/merge-sorted-array/">leetcode</a>
  */
