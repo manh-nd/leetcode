@@ -1,29 +1,35 @@
 package array;
 
+import org.junit.jupiter.params.ParameterizedTest;
+
 /**
  * @link <a href="https://leetcode.com/problems/merge-sorted-array/">leetcode</a>
  */
 public class _88_MergeSortedArray {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int i = m + n - 1;
+        int k = nums1.length - 1;
+        int i = m - 1;
+        int j = n - 1;
 
-        while(m > 0 && n > 0) {
-            int num1 = nums1[m - 1];
-            int num2 = nums2[n - 1];
+        while (k >= 0) {
 
-            if(num1 > num2) {
-                nums1[i--] = num1;
-                m--;
+            if (i < 0) {
+                nums1[k] = nums2[j];
+                j--;
+            } else if (j < 0) {
+                nums1[k] = nums1[i];
+                i--;
             } else {
-                nums1[i--] = num2;
-                n--;
+                if (nums1[i] > nums2[j]) {
+                    nums1[k] = nums1[i];
+                    i--;
+                } else {
+                    nums1[k] = nums2[j];
+                    j--;
+                }
             }
-        }
 
-        while(n > 0) {
-            int num = nums2[n - 1];
-            nums1[i--] = num;
-            n--;
+            k--;
         }
     }
 }

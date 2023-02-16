@@ -5,29 +5,20 @@ package array;
  */
 public class _27_RemoveElement {
     public int removeElement(int[] nums, int val) {
-        int r = nums.length;
-        int i = nums.length - 1;
-        while(i >= 0) {
-            if(nums[i] == val) {
-                nums[i] = 0;
-
-                if(i < r - 1) {
-                    for(int j = i; j < r - 1; j++) {
-                        swap(nums, j, j + 1);
-                    }
-                }
-
-                r--;
+        int k = 0;
+        for (int num : nums) {
+            if (num != val) {
+                nums[k] = num;
+                k++;
             }
+        }
+
+        int i = nums.length;
+        while (i > k) {
+            nums[i-1] = 0;
             i--;
         }
 
-        return r;
-    }
-
-    void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+        return k;
     }
 }
